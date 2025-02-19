@@ -1,0 +1,11 @@
+.others-content-area {
+  width: var(--default-width);
+  margin-left: var(--side-padding);
+  margin-right: var(--side-padding);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.others-content-area ul {
+  list-style: disc;
+  padding-left: 20px;
+}

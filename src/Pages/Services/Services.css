@@ -1,0 +1,42 @@
+.services-section {
+  position: relative;
+
+  margin-bottom: 3vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot2 {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+  height: 20vh;
+}
+.dot1 {
+  display: flex;
+  position: absolute;
+  left: 0%;
+  top: 0;
+  height: 20vh;
+}
+.service-section {
+  width: 90%;
+}
+
+.Services-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.straight-line {
+  width: 70%;
+  height: 2px;
+  background: var(--horizontal-gradient);
+ 
+  margin-top: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
+}

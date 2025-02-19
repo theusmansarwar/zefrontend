@@ -1,0 +1,50 @@
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 5 cards per row on desktop */
+  gap: 20px;
+  justify-content: center; /* Centers the grid items */
+
+  padding: 20px;
+  padding-bottom: 0%;
+
+  margin-left: var(--side-padding);
+  margin-right: var(--side-padding);
+}
+
+.Teams-section-data {
+  width: 50%;
+  margin-left: var(--side-padding);
+  margin-right: var(--side-padding);
+}
+.Teams-section-data h2 span {
+  color: var(--secondary-color);
+}
+.Team-heading {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-top: var(--heading-top-space);
+  margin-bottom: var(--heading-bottom-space);
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+  .team-container {
+    grid-template-columns: repeat(4, 1fr); /* 2 cards per row on mobile */
+  }
+  .Teams-section-data {
+    width: 90%;
+    margin-left: var(--side-padding);
+    margin-right: var(--side-padding);
+  }
+}
+@media (max-width: 768px) {
+  .team-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+  }
+  .Teams-section-data {
+    width: 90%;
+    margin-left: var(--side-padding);
+    margin-right: var(--side-padding);
+  }
+}

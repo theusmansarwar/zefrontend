@@ -1,0 +1,149 @@
+.footer {
+  background: var(--horizontal-gradient);
+  color: white;
+  padding: 10px 5%;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+/* Left Section */
+.footer-left {
+  flex: 1;
+  width: 20%;
+  margin-top: -40px;
+}
+.footer-left img {
+  height: 70px;
+}
+
+.footer h1 {
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.brand-name {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.footer-left p {
+  margin-top: 0px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons svg {
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--primary-color);
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.2);
+}
+
+/* Right Section */
+.footer-right {
+  flex: 2;
+  width: 60%;
+}
+
+/* Footer Columns */
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.footer-column {
+  min-width: 150px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 650;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer-column ul li svg {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.copyright a {
+  text-decoration: none;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+  .footer h1 {
+    font-size: 30px;
+
+    margin-bottom: 30px;
+  }
+  .footer-left,
+  .footer-right {
+    width: 100%;
+  }
+  .footer-left {
+    margin-top: 0px;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+
+    gap: 20px;
+    border: none;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+  .footer-left img {
+    height: 50px;
+  }
+}

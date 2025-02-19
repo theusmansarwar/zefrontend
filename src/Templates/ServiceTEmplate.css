@@ -1,0 +1,115 @@
+.service-card-section {
+  height: var(--service-card-height);
+  width: 100%; /* Ensures full width inside grid */
+  max-width: 100%; /* Sets a fixed max width */
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  z-index: 2;
+  margin-bottom: 20px;
+  padding: 20px;
+  justify-self: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling effect */
+}
+
+.service-card-section:hover {
+  transform: scale(1.02);
+  box-shadow: var(--all-side-box-shadow);
+}
+
+.service-area-section {
+  /* Fixed the typo */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.service-card-section img {
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: var(--service-card-img-height);
+}
+
+.service-card-section p {
+  color: var(--white-color);
+  font-size: var(--card-p-size);
+  overflow: hidden;
+  line-height: 1.2;
+  padding: 20px 0px;
+  height: var(--service-card-p-height);
+}
+
+.rounded-tab2 {
+  --r: 1em;
+  border-inline: var(--r) solid transparent; /* Ensures no unwanted border */
+  border-radius: calc(2 * var(--r)) calc(2 * var(--r)) 0 0 / var(--r);
+  mask: radial-gradient(var(--r) at var(--r) 0, transparent 98%, #000 101%)
+      calc(-1 * var(--r)) 100%/100% var(--r) repeat-x,
+    conic-gradient(#000 0 0) padding-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  height: 30px;
+  line-height: 1.8;
+  padding-inline: 0.5em;
+  background-color: var(--white-color);
+  padding-left: 20px;
+  padding-right: 20px;
+  left: calc(70% + 0.5px); /* Fix subpixel rendering */
+  transform: translateX(-51%) translateZ(0);
+  bottom: 0;
+  width: fit-content;
+  backface-visibility: hidden; /* Prevents unwanted white lines */
+}
+
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .rounded-tab2 {
+    --r: 1em;
+    border-inline: var(--r) solid #0000;
+    border-radius: calc(2 * var(--r)) calc(2 * var(--r)) 0 0 / var(--r);
+    mask: radial-gradient(var(--r) at var(--r) 0, #0000 98%, #000 101%)
+        calc(-1 * var(--r)) 100%/100% var(--r) repeat-x,
+      conic-gradient(#000 0 0) padding-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    height: 30px;
+    line-height: 1.8;
+    padding-inline: 0.5em;
+    background-color: var(--white-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 60%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: fit-content;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

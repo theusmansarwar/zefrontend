@@ -1,0 +1,137 @@
+.pupular-section {
+  width: var(--default-width);
+  margin-left: var(--side-padding);
+  margin-bottom: 50px;
+}
+.pupular-section p {
+  width: var(--default-width);
+}
+.grid-section {
+  display: flex;
+  gap: 20px;
+}
+.grid-section .left {
+  width: 60%;
+  height: 500px;
+}
+.grid-section .right {
+  width: 38%;
+  height: 500px;
+}
+.grid-section .right .feature-section {
+  height: 100%;
+}
+.grid-section .left .feature-section {
+  height: 100%;
+}
+.grid-section .right .content-section {
+  width: 100%;
+  height: 240px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling effect */
+  margin-top: 20px;
+}
+.grid-section .left .content-section {
+  width: 100%;
+  height: 500px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling effect */
+}
+
+.grid-section .left .content-section:hover {
+  transform: scale(1.02);
+}
+.grid-section .right .content-section:hover {
+  transform: scale(1.02);
+}
+
+.grid-section .right .content-section:first-child {
+  margin-top: 0px;
+}
+.text-section3 {
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: flex-end;
+}
+.blackscreen3 {
+  height: 500px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background: var(--background-blackScreen);
+  display: flex;
+  justify-content: end;
+}
+.text-section4 {
+  color: rgba(255, 255, 255, 0.858);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: flex-end;
+}
+.text-section4 h1,
+.text-section3 h1 {
+  margin: 0%;
+  padding: 0%;
+  line-height: 1;
+  font-size: 36px;
+  height: 77px;
+  overflow: hidden;
+}
+.text-section4 p,
+.text-section3 p {
+  margin: 0%;
+  height: 48px;
+  overflow: hidden;
+}
+.blackscreen4 {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background: var(--background-blackScreen);
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 768px) {
+  .grid-section {
+    flex-direction: column;
+  }
+  .grid-section .left {
+    width: 100%;
+    height: 240px;
+  }
+  .grid-section .right {
+    width: 100%;
+  }
+  .grid-section .left .content-section {
+    width: 100%;
+    height: 240px;
+  }
+  .blackscreen3 {
+    height: 240px;
+    width: 100%;
+    border-radius: var(--border-radius);
+    background: var(--background-blackScreen);
+    display: flex;
+    justify-content: end;
+  }
+  .text-section4 h1,
+  .text-section3 h1 {
+    margin: 0%;
+    padding: 0%;
+    line-height: 1;
+    font-size: 28px;
+    height: 56px;
+    overflow: hidden;
+  }
+  .text-section4 p,
+  .text-section3 p {
+    font-size: 14px;
+    margin: 0%;
+    height: 40px;
+    overflow: hidden;
+  }
+}

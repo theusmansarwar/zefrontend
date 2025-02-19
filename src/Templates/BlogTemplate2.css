@@ -1,0 +1,91 @@
+.Blog-card2-section {
+  height: fit-content;
+  width: 100%; /* Ensures full width inside grid */
+  max-width: 100%; /* Sets a fixed max width */
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-secondary);
+  box-shadow: var(--all-side-box-shadow);
+  z-index: 2;
+  margin-bottom: 20px;
+
+  cursor: pointer;
+  justify-self: center; /* Centers cards inside grid */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling effect */
+}
+
+.Blog-card2-section:hover {
+  transform: scale(1.02);
+  box-shadow: var(--all-side-box-shadow);
+}
+
+.Blog-area2-section {
+  /* Fixed the typo */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.Blog-card2-section img {
+  border-radius: var(--border-radius-secondary);
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 100%;
+  height: 200px;
+}
+.Blog-card2-section h2 {
+  color: var(--black-color);
+  margin: 0%;
+  padding: 0%;
+
+  font-size: 22px;
+  height: 66px;
+  
+
+  overflow: hidden;
+  padding: 10px;
+}
+
+.Blog-card2-section p {
+  color: var(--black-color);
+  height: 73px;
+
+  overflow: hidden;
+
+  padding: 10px;
+  padding-top: 0%;
+}
+.Blog-card2-section p:last-child {
+  color: var(--black-color);
+  height: 20px;
+  font-size: 12px;
+  overflow: hidden;
+
+  padding: 10px;
+  padding-top: 0%;
+}
+
+.Blog2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .Blog2-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .Blog-card2-section img {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Blog2-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

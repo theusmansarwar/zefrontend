@@ -1,0 +1,78 @@
+pre {
+  width:var(--default-width); /* Make the container take full width */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+ 
+  white-space: pre-wrap;
+  text-align: justify;
+  font-size: 16px;
+}
+.Blog-page-feature-img-area {
+  width:var(--default-width); /* Make the container take full width */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Blog-page-feature-img-area h1 {
+  width:var(--default-width); /* Make the container take full width */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.description-data{
+  width:var(--default-width); /* Make the container take full width */
+  
+  padding: 0%;
+  margin: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.description-data img{
+  width:var(--default-width);
+  height: auto; /* Make the container take full width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Blog-page-feature-img {
+  width: 100%; /* Make it responsive */
+  max-width: 1200px; /* Prevent it from getting too large */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure it covers the space properly */
+  border-radius: 10px; /* Optional: Adds rounded corners */
+  margin-bottom: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .Blog-page-feature-img {
+    width: 95%; /* Slight padding on smaller screens */
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .Blog-page-feature-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .Blog-page-feature-img {
+    width: 100%;
+    height: auto;
+  }
+}

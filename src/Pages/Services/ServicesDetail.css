@@ -1,0 +1,259 @@
+
+.Pricing-section {
+  width: var(--default-width);
+  margin-left: var(--side-padding);
+  margin-right: var(--side-padding);
+}
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 🖥️ 4 columns on large screens */
+  gap: 40px;
+
+  text-align: left;
+  padding: 20px;
+  
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+}
+
+.feature-item .class-icon {
+ height: 60px;
+ width: 60px;
+ background: var(--horizontal-gradient);
+ font-size: 30px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+color: white;
+margin-bottom: 10px;
+}
+
+.feature-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+
+.features-container2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 🖥️ 4 columns on large screens */
+  gap: 40px;
+  
+  width: var(--default-width);
+  margin-left: var(--side-padding);
+  margin-right: var(--side-padding);
+  text-align: center;
+  padding: 20px;
+}
+
+.feature-item2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.feature-item2 .icon {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.feature-item2 h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.feature-item2 p {
+  font-size: 14px;
+  color: #555;
+}
+.Soloution-main-area {
+  width: var(--default-width);
+  margin: 50px var(--side-padding);
+  height: auto; /* ✅ Auto height to prevent overflow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.background-box {
+  width: 400px;
+  height: 400px;
+  background-color: var(--primary-transparent-color);
+  position: absolute;
+  z-index: 1;
+  top: 210px;
+  border-radius: var(--border-radius);
+}
+
+.content-area,
+.content-area2 {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  
+  height: 400px;
+}
+.content-area h1,
+.content-area2 h1 {
+font-size: var(--fontsize-heading) ;
+
+}
+
+/* ✅ Left & Right sections now take full width */
+.content-area .left,
+.content-area2 .left,
+.content-area .right,
+.content-area2 .right {
+  width: 48%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.content-area2 .right {
+
+  direction: rtl;
+  
+}
+
+/* ✅ Image area is fully responsive */
+.content-area .right .image-area,
+.content-area2 .right .image-area {
+  background-color: var(--primary-color);
+  width: 80%;
+
+  height: 350px;
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+
+.content-area .right .image-area .image-section {
+  width: 120%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: var(--grey-color);
+  justify-content: center;
+
+}
+
+.content-area2 .right .image-area .image-section {
+  width: 120%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  background-color: var(--grey-color);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+ 
+}
+.content-area .right .image-area .image-section img,
+.content-area2 .right .image-area .image-section img{
+  width: 100%;
+  
+}
+
+.benefits-subtext {
+
+  font-size: 1rem;
+  color: #666;
+  max-width: 100%;
+}
+
+
+/* 📌 Responsive Adjustments */
+@media (max-width: 1024px) {
+  .features-container {
+    grid-template-columns: repeat(3, 1fr); /* 📱 3 columns on tablets */
+  }
+  .features-container2 {
+    grid-template-columns: repeat(3, 1fr);
+     /* 📱 3 columns on tablets */
+  }
+  .content-area .right .image-area .image-section img,
+.content-area2 .right .image-area .image-section img{
+  height: 100%;
+ 
+}
+.content-area .right .image-area,
+.content-area2 .right .image-area {
+  background-color: var(--primary-color);
+  width: 90%;
+
+  height: 250px;
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr); /* 📱 2 columns on mobile */
+  }
+  .features-container2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    padding: 0%; /* 📱 2 columns on mobile */
+  }
+ 
+
+  .Soloution-main-area {
+    height: auto; /* ✅ Let content define height */
+  }
+
+  .content-area {
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+  }
+  .content-area2 {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: fit-content;
+  }
+
+  .content-area .right,
+  .content-area2 .right,
+  .content-area .left,
+  .content-area2 .left {
+    width: 100%;
+  }
+  
+.background-box {
+display: none;
+}
+}
+
+@media (max-width: 480px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Reduce gap for smaller screens */
+  }
+}

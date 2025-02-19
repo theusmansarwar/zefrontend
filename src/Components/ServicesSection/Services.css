@@ -1,0 +1,77 @@
+.services-section {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot2 {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 2%;
+  height: 30vh;
+}
+.dot1 {
+  display: flex;
+  position: absolute;
+  left: 2%;
+  top: 0;
+  height: 20vh;
+}
+.service-section {
+  width: var(--default-width);
+}
+
+.Services-grid {
+  display: flex;
+  justify-content: space-between;
+}
+.upper-section {
+  display: flex;
+  width: 100%;
+  margin-bottom: var(--span-heading-space);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+.upper-section h1 {
+  font-size: var(--fontsize-heading);
+  font-weight: 700;
+  line-height: 1;
+  width: 40%;
+}
+.upper-section p {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling effect */
+  cursor: pointer;
+}
+
+.upper-section p:hover {
+  transform: scale(1.02);
+  color: var(--primary-color);
+}
+
+.upper-section h1 span {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .upper-section {
+    flex-direction: column;
+  }
+  .upper-section h1 {
+    width: 100%;
+    font-size: var(--fontsize-heading-responsive);
+  }
+  .upper-section p {
+    width: 100%;
+  }
+}

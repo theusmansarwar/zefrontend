@@ -1,0 +1,55 @@
+.team-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--all-side-box-shadow);
+  padding: 20px;
+  text-align: center;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background-color: var(--grey-color);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.role {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.social-icons2 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icons2 svg {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+.social-icons svg:hover {
+  color: var(--primary-color);
+}

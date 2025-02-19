@@ -1,0 +1,27 @@
+.Blog-Section {
+  background-color: var(--grey-color);
+  padding: 5%;
+  padding-top: 20px;
+  margin-top: 50px;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

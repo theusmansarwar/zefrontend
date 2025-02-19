@@ -1,0 +1,106 @@
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 30px;
+  animation: marquee-scroll 50s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-text {
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--primary-color);
+}
+
+/* Even items - Red */
+.filled {
+  color: var(--primary-color);
+}
+
+.star-icon {
+  margin-right: 15px;
+  color: var(--primary-color);
+}
+
+@media (max-width: 756px) {
+  .nav-content-section .right {
+    display: none;
+  }
+
+  .nav-content-section .left {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .menu-item {
+    padding: 5px;
+    margin: 0px;
+  }
+  .menu-item:first-child {
+    margin-top: 20px;
+  }
+
+  .menu-item {
+    width: 100%;
+  }
+  .menu-item.active::after {
+    content: "";
+    display: flex;
+    width: 0px;
+    height: 0px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .rounded-tab {
+    margin-top: -19px;
+
+    margin-left: 50%;
+    height: 20px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 50px;
+  }
+  .dot.Active {
+    width: 7px;
+    height: 7px;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+
+    margin-top: 5px;
+  }
+}
+@media (max-width: 1268px) {
+  .marquee-container {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
