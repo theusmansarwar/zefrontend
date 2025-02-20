@@ -1,6 +1,7 @@
 import React from "react";
 import "./BlogTemplate.css";
 import { useNavigate } from "react-router-dom";
+import useTruncateText from "../useTruncateText";
 
 const BlogTemplate = ({ image, title, content }) => {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ const BlogTemplate = ({ image, title, content }) => {
         <img src={image} alt="Blog" />
       </div>
       <div className="blog-text-section">
-        <h3>{title}</h3>
-        <p>{content}</p>
+        <h3>{useTruncateText(title, 30)}</h3>
+        <p>{useTruncateText(content, 170)}</p>
       </div>
     </div>
   );

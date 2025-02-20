@@ -41,15 +41,16 @@
   justify-content: space-between;
 }
 
-.contact-form-section .left .input-group .input-field {
-  width: 48%;
+.contact-form-section .left .input-field {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .contact-form-section .left input,
 .contact-form-section .left textarea {
   width: 100%;
   padding: 12px;
-  margin-bottom: 10px;
+  
   border: 1px solid #ddd;
   border-radius: 6px;
 }
@@ -113,6 +114,7 @@
   padding: 0%;
   font-size: 20px;
 }
+
 .assssss {
   margin: 0%;
   padding: 0%;

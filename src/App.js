@@ -14,10 +14,13 @@ import Team from "./Pages/Team/Team";
 import Blog from "./Pages/Blog/Blog";
 import BlogDetail from "./Pages/Blog/BlogDetail";
 import whatsapp from './Assets/whatsapp.png';
+
+
 function App() {
   return (
     <Router>
       <Header />
+ 
       <a
               href="http://wa.me/923007044566"
               target="_blank"

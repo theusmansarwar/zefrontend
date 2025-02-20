@@ -62,4 +62,19 @@
     width: 90%;
     max-width: 250px;
   }
+  .blog-text-section h3 {
+    font-size: 1.3rem;
+    height: 3.5rem;
+    text-align: left;
+    overflow-y: hidden;
+    
+  }
+  .blog-text-section p {
+    font-size: 0.8rem;
+    overflow-y: hidden;
+  
+    line-height: 1;
+    height: 5rem;
+    text-align: left;
+  }
 }

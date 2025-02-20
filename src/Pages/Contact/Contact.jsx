@@ -5,22 +5,102 @@ import { LuMapPin } from "react-icons/lu";
 import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
 import contactImg from "../../Assets/contact.jpg";
 import Faq from "../../Components/FAQS/Faq";
+import { createLead } from "../../DAL/create";
+
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import CustomAlert from "../../Components/Alert/CustomAlert";
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when component mounts
   }, []);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    phone: "",
     email: "",
-    message: "",
+    subject: "",
+    query: "",
   });
+
+  const [selectedCountryCode, setSelectedCountryCode] = useState(""); // Set country code correctly
+  const [alertType, setAlertType] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [formErrors, setFormErrors] = useState({}); // Store validation errors
+  const [isSubmitted, setIsSubmitted] = useState(false); // Track form submission
+
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // Clear error only if input becomes valid
+    if (isSubmitted) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        [e.target.name]: e.target.value.trim() ? "" : prevErrors[e.target.name]
+      }));
+    }
   };
+
+  const handlePhoneChange = (value) => {
+    setFormData({ ...formData, phone: value });
+
+    if (isSubmitted && value) {
+      setFormErrors((prevErrors) => ({ ...prevErrors, phone: "" }));
+    }
+  };
+
+  const formatPhoneNumber = (phone) => {
+    const parsedNumber = parsePhoneNumberFromString(phone, selectedCountryCode);
+    return parsedNumber && parsedNumber.isValid() ? parsedNumber.formatInternational() : phone;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitted(true); // Mark form as submitted
+
+
+    const formattedPhone = formatPhoneNumber(formData.phone);
+    const payload = new FormData();
+    payload.append("name", formData.name);
+    payload.append("phone", formattedPhone);
+    payload.append("email", formData.email);
+    payload.append("subject", formData.subject);
+    payload.append("query", formData.query);
+
+    try {
+      const response = await createLead(payload);
+      console.log('API Response:', response);
+
+      if (response?.status === 201) {
+        setAlertType("success");
+        setAlertMessage(response?.message);
+        setFormData({ name: "", phone: "", email: "", subject: "", query: "" }); // Reset form
+        setIsSubmitted(false); // Reset submission state
+      } else if (response?.status === 400 && response?.missingFields) {
+        const errors = {};
+        response.missingFields.forEach((field) => {
+          errors[field.name] = field.message;
+        });
+
+        setFormErrors(errors);
+        setAlertType("error");
+        setAlertMessage(response?.message);
+      } else {
+        setAlertType("error");
+        setAlertMessage(response?.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setAlertType("error");
+      setAlertMessage("Something went wrong. Try again later.");
+    }
+  };
+
   return (
     <div>
+         <CustomAlert type={alertType} message={alertMessage} onClose={() => setAlertMessage("")} />
       <div className="Hero-section">
         <div
           className="feature-section"
@@ -60,32 +140,23 @@ const Contact = () => {
               Have questions or feedback? We're here to help. Send us a message,
               and we’ll respond within 24 hours.
             </p>
-
-            <div className="input-group">
-              <div className="input-field">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-              </div>
+            <form onSubmit={handleSubmit}>
+          
 
               <div className="input-field">
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={formData.lastName}
+                  id="name"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
                   onChange={handleChange}
-                />
+                /> 
+                {formErrors.name && <span className="error-message">{formErrors.name}</span>}
               </div>
-            </div>
+
+          
 
             <div className="input-field">
               <label htmlFor="email">Email Address</label>
@@ -97,17 +168,19 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
+                       {formErrors.email && <span className="error-message">{formErrors.email}</span>}
+
             </div>
             <div className="input-field">
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
+              <label htmlFor="phone" className="phone-lable">Phone Number</label>
+              <PhoneInput
+                     
+                        name="phone"
+                         value={formData.phone}
+                         onChange={handlePhoneChange}
+                         countryCodeEditable={false}
+                       />
+                       {formErrors.phone && <span className="error-message">{formErrors.phone}</span>}
             </div>
             <div className="input-field">
               <label htmlFor="subject">Subject</label>
@@ -119,21 +192,24 @@ const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
               />
+                      {formErrors.subject && <span className="error-message">{formErrors.subject}</span>}
             </div>
 
             <div className="input-field">
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
-                name="message"
+                name="query"
                 placeholder="Leave a message"
                 rows="4"
-                value={formData.message}
+                value={formData.query}
                 onChange={handleChange}
               ></textarea>
+                      {formErrors.query && <span className="error-message">{formErrors.query}</span>}
             </div>
 
-            <button className="send-btn">Send Message</button>
+            <button className="send-btn" type="submit">Send Message</button>
+            </form>
           </div>
           <div className="right">
             <Faq />

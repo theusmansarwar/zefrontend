@@ -43,50 +43,66 @@
   display: flex;
   flex-direction: column;
 }
-/* Dropdown Styling */
-.custom-dropdown .react-select__control {
-  padding: 10px;
-  font-size: 16px;
+.react-international-phone-input-container{
+  
+  border: 1px solid #ddd !important;
+  border-radius: 5px !important;
+  display: flex  !important;
+  align-items: center  !important;
+  justify-content: center !important;
+ 
+}
+.react-international-phone-country-selector-button{
+  margin-top: 0px !important;
+  height: 50px  !important;
+  background-color: white  !important;
+  border: 1px solid #ddd !important
+
+}
+.react-international-phone-input{
+
+  height: 50px  !important;
+font-size: 16px !important;
+margin: 0% !important;
+  
   border-radius: 5px;
-  border: 1px solid #ddd;
 }
 
-.custom-dropdown .react-select__menu {
-  font-size: 16px;
-}
 
-.custom-single-value {
-  display: flex;
-  align-items: center;
-}
 
-.custom-option {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
 
-.option-container {
-  display: flex;
-  align-items: center;
-}
 
-.option-container img {
-  width: 20px;
-  height: 15px;
-  margin-right: 10px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 .contact-form input,
-.contact-form .inputPhone,
+
 .contact-form textarea {
   width: 100%;
   padding: 12px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+.contact-form input:first-child{
+margin-top: 0%;
+margin-bottom: 15px;
+}
+
+.error-message{
+  color: red;
 }
 
 .contact-form textarea {
@@ -100,6 +116,7 @@
   padding: 12px;
   border: none;
   border-radius: 5px;
+  margin-top: 15px;
   cursor: pointer;
   font-size: 16px;
 }
