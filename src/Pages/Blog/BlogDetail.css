@@ -49,7 +49,7 @@ pre {
 .Blog-page-feature-img {
   width: 100%; /* Make it responsive */
   max-width: 1200px; /* Prevent it from getting too large */
-  height: auto; /* Maintain aspect ratio */
+  height: 600px; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure it covers the space properly */
   border-radius: 10px; /* Optional: Adds rounded corners */
   margin-bottom: 30px;

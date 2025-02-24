@@ -3,11 +3,11 @@ import "./BlogTemplate.css";
 import { useNavigate } from "react-router-dom";
 import useTruncateText from "../useTruncateText";
 
-const BlogTemplate = ({ image, title, content }) => {
+const BlogTemplate = ({ image, title, content, slug }) => {
   const navigate = useNavigate();
   return (
     <div className="Blog-area">
-      <div className="blogimg"   onClick={() => navigate(`/blog/${title}`)}>
+      <div className="blogimg"   onClick={() => navigate(`/blog/${slug}`)}>
         <img src={image} alt="Blog" />
       </div>
       <div className="blog-text-section">
