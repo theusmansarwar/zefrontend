@@ -23,8 +23,8 @@ const BlogDetail = () => {
     try {
       const response = await fetchBlogDetail(title); // Pass `title` to API call
 
-      if (response && response._id) {
-        setBlog(response); // Store single blog object
+      if (response) {
+        setBlog(response.blog); // Store single blog object
       } else {
         throw new Error(response.message || "Blog not found");
       }
