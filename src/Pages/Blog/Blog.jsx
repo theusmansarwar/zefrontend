@@ -15,7 +15,9 @@ const Blog = () => {
 
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 15; // Adjust based on your needs
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     getBlogs();
   }, [page]);
@@ -38,7 +40,7 @@ const Blog = () => {
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      setLoading(false) ;
     }
   };
 

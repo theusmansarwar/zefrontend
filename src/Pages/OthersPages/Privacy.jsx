@@ -20,7 +20,7 @@ const Privacy = () => {
         >
           <div className="blackscreen">
             <div className="text-section2">
-              <h1>Privacy</h1>
+              <h1>Privacy Policy</h1>
             </div>
           </div>
         </div>

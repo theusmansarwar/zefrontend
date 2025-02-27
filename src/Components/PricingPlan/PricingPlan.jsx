@@ -7,6 +7,7 @@ const plans = [
   {
     title: "Trial Plan",
     price: "Free or $20",
+    duration:"15 Days",
     targetAudience: "Businesses wanting to test your service before committing.",
     features: [
       "Website SEO audit (basic)",
@@ -15,12 +16,13 @@ const plans = [
       "One backlink from a high-authority site",
       "Competitor analysis (basic)",
       "Basic technical SEO check (broken links, speed, mobile-friendliness)",
-      "7-day validity",
+      "15-day validity",
     ],
   },
   {
     title: "Basic Plan",
     price: "$350 - $450 ",
+    duration:"per month",
     targetAudience: "Small businesses looking for affordable SEO improvements.",
     features: [
       "Full website SEO audit",
@@ -36,6 +38,7 @@ const plans = [
   {
     title: "Premium Plan",
     price: "$650 - $999 ",
+    duration:"per month",
     targetAudience: "Businesses that want aggressive SEO and long-term growth.",
     features: [
       "Advanced website SEO audit",
@@ -58,7 +61,7 @@ const PricingPlan = () => {
       {plans.map((plan, index) => (
         <div key={index} className="pricing-card">
           <h2>{plan.title}</h2>
-          <h3>{plan.price} <span className="permonth">per month</span></h3>
+          <h3>{plan.price} <span className="permonth">{plan.duration}</span></h3>
           <button className="cta-button" onClick={()=>navigate('/contact')}>GET STARTED</button>
           <ul>
             {plan.features.map((feature, idx) => (

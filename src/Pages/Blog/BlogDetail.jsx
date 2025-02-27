@@ -5,13 +5,17 @@ import Popular from "../../Components/PopularBlogs/Popular";
 import AuthorShare from "../../Components/AuthorShare/AuthorShare";
 import { fetchBlogDetail } from "../../DAL/fetch";
 import { baseUrl } from "../../Config/Config";
+import Comments from "../../Components/Comments/Comments";
+import { formatDate } from "../../Utils/Formatedate";
 
 const BlogDetail = () => {
   const { title } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     getBlogDetail();
   }, [title]);
@@ -45,6 +49,7 @@ const BlogDetail = () => {
         ) : blog ? (
           <>
             <h1>{blog.title}</h1>
+            <p className="category-text"><span>{formatDate(blog?.createdAt)}</span> <span>{blog?.category?.name}</span></p>
             <img
               src={baseUrl+blog.thumbnail}
               className="Blog-page-feature-img"
@@ -59,8 +64,9 @@ const BlogDetail = () => {
           <p>No Article Found</p>
         )}
       </div>
-
-      <AuthorShare />
+      <AuthorShare author={blog?.author} />
+      <Comments  blogId={blog?._id} comments={blog?.comments}  />
+      
       <Popular />
     </>
   );

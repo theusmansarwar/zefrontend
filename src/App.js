@@ -37,7 +37,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:title" element={<BlogDetail />} />
-        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
       </Routes>
       <Footer />

@@ -104,7 +104,7 @@ const GetintouchSection = () => {
       </div>
 
       <div className="contact-form">
-        <h2>Get in Touch</h2>
+        <h2>Let Us Drive Your Marketing Success</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

@@ -68,7 +68,7 @@ const Footer = () => {
               <h4>Others</h4>
               <ul>
                 <li onClick={() => navigate(`/terms`)}>Terms & Conditions</li>
-                <li onClick={() => navigate(`/privacy`)}>Privacy Policy</li>
+                <li onClick={() => navigate(`/privacy-policy`)}>Privacy Policy</li>
                 <li onClick={() => navigate(`/disclaimer`)}>Disclaimer</li>
               </ul>
             </div>
@@ -77,14 +77,27 @@ const Footer = () => {
               <h4>Office</h4>
               <ul>
                 <li>
-                  <FaEnvelope /> company@zemalt.com
+                 <a  href="mailto:company@zemalt.com"
+              target="_blank"
+              rel="noopener noreferrer"><FaEnvelope /> company@zemalt.com</a> 
                 </li>
-                <li>
+               
+                <li >
+                <a  href="http://wa.me/923007044566"
+              target="_blank"
+              rel="noopener noreferrer">
                   <FaPhone /> +92-(300)-7044-566
+                  </a>
                 </li>
                 <li>
+                <a
+                href="https://maps.app.goo.gl/owK9zDzZBdNGzWrL7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                   <FaMapMarkerAlt /> Plaza 119, Allama Iqbal Rd,Garhi Shahu,
                   Lahore PK
+                  </a>
                 </li>
               </ul>
             </div>

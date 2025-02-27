@@ -67,8 +67,11 @@
   border-radius: 6px;
 }
 
+
 .send-btn:hover {
-  background: darkpurple;
+  transform: scale(1.02);
+  box-shadow: var(--all-side-box-shadow);
+  background-color: var(--primary-color);
 }
 .right-img {
   background-color: var(--grey-color);

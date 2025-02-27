@@ -41,10 +41,13 @@
 @media (max-width: 768px) {
   .team-container {
     grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+    margin-bottom: 30px;
   }
   .Teams-section-data {
     width: 90%;
     margin-left: var(--side-padding);
     margin-right: var(--side-padding);
+    
   }
+  
 }
