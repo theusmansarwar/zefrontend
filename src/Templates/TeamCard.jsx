@@ -4,7 +4,7 @@ import { ImFacebook2 } from "react-icons/im";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaLinkedin } from "react-icons/fa";
 
-const TeamCard = ({ name, role, description, image }) => {
+const TeamCard = ({ name, role, sociallinks, image }) => {
   return (
     <div className="team-card">
       <img src={image} alt={name} className="profile-image" />
@@ -13,7 +13,7 @@ const TeamCard = ({ name, role, description, image }) => {
 
       <div className="social-icons2">
         <a
-          href="https://www.linkedin.com/company/zemalt/"
+          href={sociallinks.linkedin}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -21,7 +21,7 @@ const TeamCard = ({ name, role, description, image }) => {
           <FaLinkedin />
         </a>
         <a
-          href="https://www.instagram.com/zemaltpvtltd/"
+           href={sociallinks.instagram}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -29,7 +29,7 @@ const TeamCard = ({ name, role, description, image }) => {
           <RiInstagramFill />
         </a>
         <a
-          href="https://www.facebook.com/zemaltpvtltd"
+         href={sociallinks.facebook}
           target="_blank"
           rel="noopener noreferrer"
         >

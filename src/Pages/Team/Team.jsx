@@ -1,106 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Team.css";
-import profileImage from "../../Assets/Person.jpg";
-import usman from "../../Assets/usman.webp";
-import ahsan from "../../Assets/AHSANBAJWA.webp";
-import hamza from "../../Assets/hamza2.png";
-import zainab from "../../Assets/zainabpng.png";
-import zain from "../../Assets/zain.png";
-import ahmed from "../../Assets/ahmad.png";
-import haseeb from "../../Assets/haseeb.png";
-import unique from "../../Assets/unique.png";
-import Daniyal from "../../Assets/danyial.png";
-import alexia from "../../Assets/alexia.png";
 import TeamCard from "../../Templates/TeamCard";
 import backgroundimg from "../../Assets/background3.webp";
 import headingDesign from "../../Assets/headingDesign.svg";
-import baber from '../../Assets/babar.png'
-const teamMembers = [
-   
-  {
-    name: "Sufyan Rasheed",
-    role: "Founder",
-    description: "Operations strategist, focused on efficiency and execution",
-    image: profileImage,
-  },
-  {
-    name: "Zainab Khan",
-    role: "Co-Founder",
-    description: "Marketing guru, dedicated to brand storytelling",
-    image: zainab,
-  },
-  {
-    name: "Usman Sarwar",
-    role: "Web Developer",
-    description:
-      "Enjoys adventurous travel, seeks new cultures and offbeat destinations",
-    image: usman,
-  },
-  {
-    name: "Ahsan Ashraf",
-    role: "SQA Engineer",
-    description: "Tech enthusiast, loves innovation and problem-solving",
-    image: ahsan,
-  },
-  {
-    name: "Ameer Hamza",
-    role: "SEO Expert",
-    description: "Finance expert, passionate about growth and sustainability",
-    image: hamza,
-  },
-  {
-    name: "Babar Saleem",
-    role: "Ui/Ux Designer",
-    description: "Finance expert, passionate about growth and sustainability",
-    image: baber,
-  },
-];
-const teamMembers2 = [
-  {
-    name: "Zain Imtiaz",
-    role: "Customer Support Manager",
-    description: "Operations strategist, focused on efficiency and execution",
-    image: zain,
-  },
-  {
-    name: "Ahmed Anwar",
-    role: "Customer Support",
-    description: "Marketing guru, dedicated to brand storytelling",
-    image: ahmed,
-  },
-  {
-    name: "Haseeb Raza",
-    role: "Customer Support",
-    description:
-      "Enjoys adventurous travel, seeks new cultures and offbeat destinations",
-    image: haseeb,
-  },
-  {
-    name: "Unique Sohail",
-    role: "Customer Support",
-    description: "Tech enthusiast, loves innovation and problem-solving",
-    image: unique,
-  },
-  {
-    name: "Daniyal Malik",
-    role: "Customer Support",
-    description: "Finance expert, passionate about growth and sustainability",
-    image: Daniyal,
-  },
-  {
-    name: "Alexia Barbar",
-    role: "Customer Support",
-    description: "Finance expert, passionate about growth and sustainability",
-    image: alexia,
-  },
-];
+import TeamSkeleton from "../../Components/Skeletonloaders/TeamSkeleton";
+import { getTeam } from "../../DAL/fetch"; // Ensure this function correctly calls the API
+import { baseUrl } from "../../Config/Config";
 
 const Team = () => {
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    fetchTeamData();
   }, []);
+
+  const fetchTeamData = async () => {
+    try {
+      const response = await getTeam();
+      console.log("API Response:", response);
+      if (response?.teams) {
+        setTeams(response.teams);
+      } else {
+        throw new Error(response.message || "Failed to fetch teams");
+      }
+    } catch (error) {
+      console.error("Error fetching team data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
+      {/* Hero Section */}
       <div className="Hero-section">
         <div
           className="feature-section"
@@ -118,14 +51,18 @@ const Team = () => {
           </div>
         </div>
       </div>
+
+      {/* Page Heading */}
       <div className="page-heading-area">
         <p>
           OUR TEAM{" "}
           <span>
-            <img src={headingDesign} />
+            <img src={headingDesign} alt="heading design" />
           </span>
         </p>
       </div>
+
+      {/* Team Section Description */}
       <div className="Teams-section-data">
         <h2>
           Meet our <span>team members</span>
@@ -140,35 +77,37 @@ const Team = () => {
         </p>
       </div>
 
-      <h2 className="Team-heading">Executives</h2>
-      <div className="team-container">
-        {teamMembers.map((member, index) => (
-          <TeamCard
-            key={index}
-            name={member.name}
-            role={member.role}
-            description={member.description}
-            image={member.image}
-          />
-        ))}
-      </div>
-      <h2 className="Team-heading">Support Team</h2>
-      <div className="team-container">
-        {teamMembers2.map((member, index) => (
-          <TeamCard
-            key={index}
-            name={member.name}
-            role={member.role}
-            description={member.description}
-            image={member.image}
-          />
-        ))}
-      </div>
+      {/* Team List */}
+      {loading ? (
+        <TeamSkeleton />
+      ) : (
+        teams.map((teamCategory, index) => (
+          <div key={index}>
+            <h2 className="Team-heading">{teamCategory.categoryName}</h2>
+            <div className="team-container">
+              {teamCategory.members.map((member, idx) => (
+                <center>
+                <TeamCard
+                  key={idx}
+                  name={member.name}
+                  role={member.role.name}
+                  description={member.description}
+                  image={baseUrl+member.image || "/default-profile.png"} 
+                  sociallinks={member.socialLinks}
+                />
+                </center>
+              ))}
+            </div>
+          </div>
+        ))
+      )}
+      
       <br />
       <br />
+      {/* Footer Section */}
       <center>
         <h1 className="heading-testimonial">
-          Guiding Your<span> Customers </span>with <span>Ease </span>
+          Guiding Your <span> Customers </span> with <span>Ease </span>
         </h1>
         <p className="p-testimonial">
           At Zemalt, we create seamless digital experiences that help your

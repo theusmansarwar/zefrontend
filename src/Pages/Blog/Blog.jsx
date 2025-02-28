@@ -6,6 +6,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Popular from "../../Components/PopularBlogs/Popular";
 import { fetchBlogs } from "../../DAL/fetch";
+import BlogCardSkeleton from "../../Components/Skeletonloaders/BlogCardSkeleton";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -72,14 +73,14 @@ const Blog = () => {
       <div className="Blog-grid">
         <h2 className="Blog-heading">Latest Blogs</h2>
         <p>Drive Digital Success with Expert Strategies and Insights.</p>
-
+     
         {loading ? (
-          <p>Loading blogs...</p>
+         <BlogCardSkeleton/>
         ) : error ? (
           <p className="error-message">{error}</p>
         ) : (
           <>
-            <BlogTemplate2 Blogs={blogs} /> {/* Pass blog data to template */}
+            <BlogTemplate2 Blogs={blogs} />
 
             {/* ✅ Ensure Pagination Uses Correct `totalPages` */}
             <Stack spacing={2} alignItems="center">

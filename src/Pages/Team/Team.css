@@ -1,14 +1,19 @@
 .team-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 5 cards per row on desktop */
-  gap: 20px;
-  justify-content: center; /* Centers the grid items */
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.team-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--all-side-box-shadow);
   padding: 20px;
-  padding-bottom: 0%;
-
-  margin-left: var(--side-padding);
-  margin-right: var(--side-padding);
+  text-align: center;
+  flex: 0 0 calc(20% - 40px);
+  width: 220px;
+  
+  transition: transform 0.3s ease-in-out;
 }
 
 .Teams-section-data {

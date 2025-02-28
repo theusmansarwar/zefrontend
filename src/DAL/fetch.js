@@ -24,6 +24,18 @@ export const fetchBlogDetail = async (title) => {
   };
   return invokeApi(reqObj);
 };
+export const fetchTestimonial = async (title) => {
+  const reqObj = {
+    path: `testimonial/view/${title}`,
+    method: "GET",
+    headers: {
+    
+    },
+
+    postData: {},
+  };
+  return invokeApi(reqObj);
+};
 export const getComments = async (data) => {
   const reqObj = {
     path: `/comment/approved-comment`,
@@ -33,6 +45,18 @@ export const getComments = async (data) => {
     },
 
     postData: {data},
+  };
+  return invokeApi(reqObj);
+};
+export const getTeam= async () => {
+  const reqObj = {
+    path: `/team/live`,
+    method: "GET",
+    headers: {
+    
+    },
+
+    postData: {},
   };
   return invokeApi(reqObj);
 };

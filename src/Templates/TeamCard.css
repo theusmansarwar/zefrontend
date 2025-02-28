@@ -1,12 +1,4 @@
-.team-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: var(--all-side-box-shadow);
-  padding: 20px;
-  text-align: center;
 
-  transition: transform 0.3s ease-in-out;
-}
 
 .team-card:hover {
   transform: translateY(-5px);

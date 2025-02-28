@@ -8,14 +8,18 @@ import { baseUrl } from "../../Config/Config";
 import Comments from "../../Components/Comments/Comments";
 import { formatDate } from "../../Utils/Formatedate";
 
+import Blogskeletonloader from "../../Components/Skeletonloaders/Blogskeletonloader";
+
 const BlogDetail = () => {
   const { title } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   useEffect(() => {
     getBlogDetail();
   }, [title]);
@@ -23,40 +27,43 @@ const BlogDetail = () => {
   const getBlogDetail = async () => {
     setLoading(true);
     setError("");
-
-    try {
-      const response = await fetchBlogDetail(title); // Pass `title` to API call
-
+      const response = await fetchBlogDetail(title);
       if (response) {
-        setBlog(response.blog); // Store single blog object
+        setBlog(response.blog);
+        setLoading(false)
       } else {
         throw new Error(response.message || "Blog not found");
       }
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    
   };
+
+
+
+ 
+
+
+  const sanitizedContent = blog?.detail?.replace(/<script.*?<\/script>/gis, "");
 
   return (
     <>
+ 
       <div className="Blog-page-feature-img-area">
-        {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p className="error-message">{error}</p>
-        ) : blog ? (
+      {loading ? <Blogskeletonloader/> : error ? (
+  <p className="error-message">{error}</p>
+) : blog ? (
           <>
             <h1>{blog.title}</h1>
-            <p className="category-text"><span>{formatDate(blog?.createdAt)}</span> <span>{blog?.category?.name}</span></p>
+            <p className="category-text">
+              <span>{formatDate(blog?.createdAt)}</span>{" "}
+              <span>{blog?.category?.name}</span>
+            </p>
             <img
-              src={baseUrl+blog.thumbnail}
+              src={baseUrl + blog.thumbnail}
               className="Blog-page-feature-img"
               alt={blog.title}
             />
             <div
-              dangerouslySetInnerHTML={{ __html: blog.detail }}
+              dangerouslySetInnerHTML={{ __html: blog?.detail }}
               className="description-data"
             ></div>
           </>
@@ -65,8 +72,7 @@ const BlogDetail = () => {
         )}
       </div>
       <AuthorShare author={blog?.author} />
-      <Comments  blogId={blog?._id} comments={blog?.comments}  />
-      
+      <Comments blogId={blog?._id} comments={blog?.comments} />
       <Popular />
     </>
   );

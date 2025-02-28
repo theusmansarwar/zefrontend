@@ -1,44 +1,100 @@
-.skeleton-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-  }
-  
-  .skeleton {
-    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite linear;
-    border-radius: 8px;
-  }
-  
-  .skeleton-image {
-    width: 100%;
-    height: 200px;
-  }
-  
-  .skeleton-title {
-    width: 60%;
-    height: 24px;
-  }
-  
-  .skeleton-comment-section {
+.skeleton-blog {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
+    width: 100%;
+   
+  }
+ 
+  
+  .skeleton-title {
+    width:100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    animation: pulse 1.5s infinite ease-in-out;
   }
   
-  .skeleton-comment {
-    width: 80%;
-    height: 16px;
+  .skeleton-meta {
+    width: 40%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    animation: pulse 1.5s infinite ease-in-out;
   }
   
-  @keyframes shimmer {
-    from {
-      background-position: -200% 0;
+ 
+  .skeleton-image {
+    width: 100%; /* Make it responsive */
+  max-width: 1200px; /* Prevent it from getting too large */
+  height: 600px; /* Maintain aspect ratio */
+
+  border-radius: 10px; /* Optional: Adds rounded corners */
+  margin-bottom: 30px;
+    background: #d0d0d0;
+    border-radius: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .skeleton-text {
+    width: 100%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+
+
+
+
+  .skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .skeleton-card {
+    width: 100%;
+    border-radius: 5px;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .skeleton-card-image {
+    width: 100%; 
+  height: 200px; /* Maintain aspect ratio */
+
+  border-radius: 10px; /* Optional: Adds rounded corners */
+  margin-bottom: 5px;
+    background: #d0d0d0;
+    border-radius: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  .skeleton-card-text {
+    width: 100%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+
+
+
+
+
+  
+  @keyframes pulse {
+    0% {
+      background-color: #e0e0e0;
     }
-    to {
-      background-position: 200% 0;
+    50% {
+      background-color: #f0f0f0;
+    }
+    100% {
+      background-color: #e0e0e0;
     }
   }
   

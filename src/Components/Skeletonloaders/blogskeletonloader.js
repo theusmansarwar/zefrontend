@@ -1,21 +1,27 @@
-import React from "react";
-import "./blogskeleton.css"; // Import the styles
-
-const blogSkeletonloader = () => {
-  return (
-    <div className="blogSkeletonloader-container">
-
-      <div className="blogSkeletonloader skeleton-image"></div>
-
-      <div className="blogSkeletonloader skeleton-title"></div>
-
-      <div className="blogSkeletonloader-comment-section">
-        <div className="blogSkeletonloader skeleton-comment"></div>
-        <div className="blogSkeletonloader skeleton-comment"></div>
-        <div className="blogSkeletonloader skeleton-comment"></div>
+import React from 'react'
+import './blogskeleton.css'
+const Blogskeletonloader = () => {
+    return (
+      <div className="skeleton-blog">
+        <div className="skeleton-title"></div>
+        <div className="skeleton-meta"></div>
+        <div className="skeleton-image"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        <div className="skeleton-text"></div>
+        
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
-export default blogSkeletonloader;
+export default Blogskeletonloader
