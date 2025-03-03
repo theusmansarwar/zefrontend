@@ -7,8 +7,10 @@ import { fetchBlogDetail } from "../../DAL/fetch";
 import { baseUrl } from "../../Config/Config";
 import Comments from "../../Components/Comments/Comments";
 import { formatDate } from "../../Utils/Formatedate";
+import Bloader from "../../Components/Skeletonloaders/Bloader";
 
-import Blogskeletonloader from "../../Components/Skeletonloaders/Blogskeletonloader";
+
+
 
 const BlogDetail = () => {
   const { title } = useParams();
@@ -48,7 +50,7 @@ const BlogDetail = () => {
     <>
  
       <div className="Blog-page-feature-img-area">
-      {loading ? <Blogskeletonloader/> : error ? (
+      {loading ? <Bloader/> : error ? (
   <p className="error-message">{error}</p>
 ) : blog ? (
           <>
