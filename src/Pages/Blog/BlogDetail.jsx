@@ -43,25 +43,6 @@ const BlogDetail = () => {
   return (
     <>
   
-      <Helmet>
-        <title>{blog ? `${blog.title} | Zemalt Blog` : "Blog | Zemalt"}</title>
-        <meta name="description" content={blog?.summary || "Read the latest articles on digital marketing, SEO, and business growth."} />
-        
-        {/* ✅ Open Graph Meta Tags (Facebook, LinkedIn) */}
-        <meta property="og:title" content={blog?.title || "Zemalt Blog"} />
-        <meta property="og:description" content={blog?.summary || "Discover expert insights on digital growth."} />
-        <meta property="og:image" content={blog?.thumbnail ? `${baseUrl}${blog.thumbnail}` : "https://zemalt.com/default-image.jpg"} />
-        <meta property="og:url" content={window.location.href} />
-
-        {/* ✅ Twitter Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog?.title || "Zemalt Blog"} />
-        <meta name="twitter:description" content={blog?.summary || "Discover expert insights on digital growth."} />
-        <meta name="twitter:image" content={blog?.thumbnail ? `${baseUrl}${blog.thumbnail}` : "https://zemalt.com/default-image.jpg"} />
-
-        {/* ✅ Canonical URL for SEO */}
-        <link rel="canonical" href={window.location.href} />
-      </Helmet>
 
       {/* ✅ Blog Content */}
       <div className="Blog-page-feature-img-area">
