@@ -46,6 +46,7 @@ import { RiCalendarScheduleLine, RiTeamFill, RiUserCommunityFill } from "react-i
 
 const ServicesDetail = () => {
   const { name } = useParams();
+  const formattedName = name.toLowerCase();
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when component mounts
@@ -53,7 +54,7 @@ const ServicesDetail = () => {
   const [servicesData, setServicesData] = useState(null);
 
   useEffect(() => {
-    switch (name) {
+    switch (formattedName) {
       case "seo":
         setServicesData({
           title:"Search Engine Optimization (SEO)",
