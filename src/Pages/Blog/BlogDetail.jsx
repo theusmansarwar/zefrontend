@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; 
+
 import "./BlogDetail.css";
 import Popular from "../../Components/PopularBlogs/Popular";
 import AuthorShare from "../../Components/AuthorShare/AuthorShare";
