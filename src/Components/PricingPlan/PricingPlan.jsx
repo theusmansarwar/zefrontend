@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const plans = [
   {
     title: "Trial Plan",
-    price: "Free or $20",
+    price: "$20",
     duration:"15 Days",
     targetAudience: "Businesses wanting to test your service before committing.",
     features: [
@@ -17,22 +17,6 @@ const plans = [
       "Competitor analysis (basic)",
       "Basic technical SEO check (broken links, speed, mobile-friendliness)",
       "15-day validity",
-    ],
-  },
-  {
-    title: "Basic Plan",
-    price: "$350 - $450 ",
-    duration:"per month",
-    targetAudience: "Small businesses looking for affordable SEO improvements.",
-    features: [
-      "Full website SEO audit",
-      "Keyword research & tracking (15 keywords)",
-      "On-page SEO (meta tags, content optimization, internal linking)",
-      "5 high-quality backlinks per month",
-      "Google My Business optimization",
-      "Basic technical SEO fixes",
-      "Monthly performance report",
-      "Local SEO strategies",
     ],
   },
   {
@@ -50,8 +34,28 @@ const plans = [
       "Competitor analysis (in-depth)",
       "Monthly detailed SEO reports & strategy consultation",
       "Conversion rate optimization (CRO) guidance",
+      "Full-Stack SEO"
     ],
   },
+  { 
+    title: "Basic Plan",
+    price: "$350 - $450 ",
+    duration:"per month",
+    targetAudience: "Small businesses looking for affordable SEO improvements.",
+    features: [
+      "Full website SEO audit",
+      "Keyword research & tracking (15 keywords)",
+      "On-page SEO (meta tags, content optimization, internal linking)",
+      "5 high-quality backlinks per month",
+      "Google My Business optimization",
+      "Basic technical SEO fixes",
+      "Monthly performance report",
+      "Local SEO strategies",
+     
+
+    ],
+  },
+ 
 ];
 
 const PricingPlan = () => {

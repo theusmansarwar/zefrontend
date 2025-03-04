@@ -3,7 +3,7 @@ import "./Contact.css";
 import backgroundimg from "../../Assets/background3.webp";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
-import contactImg from "../../Assets/contact.jpg";
+
 import Faq from "../../Components/FAQS/Faq";
 import { createLead } from "../../DAL/create";
 
@@ -23,7 +23,6 @@ const Contact = () => {
     query: "",
   });
 
-  const [selectedCountryCode, setSelectedCountryCode] = useState(""); // Set country code correctly
   const [alertType, setAlertType] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [formErrors, setFormErrors] = useState({}); // Store validation errors
@@ -52,7 +51,7 @@ const Contact = () => {
   };
 
   const formatPhoneNumber = (phone) => {
-    const parsedNumber = parsePhoneNumberFromString(phone, selectedCountryCode);
+    const parsedNumber = parsePhoneNumberFromString(phone);
     return parsedNumber && parsedNumber.isValid() ? parsedNumber.formatInternational() : phone;
   };
 

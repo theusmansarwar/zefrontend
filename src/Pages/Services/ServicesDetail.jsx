@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./ServicesDetail.css";
 
 import headingDesign from "../../Assets/headingDesign.svg";
-import { FaArrowRightLong, FaBullhorn, FaHandshake, FaBullseye, FaSyncAlt, FaRegFileCode, FaCode } from "react-icons/fa";
+import {  FaBullhorn,FaRegFileCode, FaCode } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import backgroundimg from "../../Assets/background3.webp";
-import ServiceTemplate2 from "../../Templates/ServiceTemplate2";
-import Benefits from "../../Components/Benifits/Benefits";
+
 import PricingPlan from "../../Components/PricingPlan/PricingPlan";
 import serviceimg1 from "../../Assets/seo.webp";
 import serviceimg2 from "../../Assets/content-writing.webp";
@@ -40,7 +38,6 @@ import { TfiMobile, TfiWrite } from "react-icons/tfi";
 import { IoAnalytics, IoBookmarksOutline } from "react-icons/io5";
 import { BiBookContent, BiSupport } from "react-icons/bi";
 import { AiFillLike, AiOutlineApi } from "react-icons/ai";
-import { DiResponsive } from "react-icons/di";
 import { RiCalendarScheduleLine, RiTeamFill, RiUserCommunityFill } from "react-icons/ri";
 
 
@@ -57,8 +54,10 @@ const ServicesDetail = () => {
 
   useEffect(() => {
     switch (name) {
-      case "Search Engine Optimization (SEO)":
+      case "seo":
         setServicesData({
+          title:"Search Engine Optimization (SEO)",
+          
           introduction:
             "At Zemalt, we enhance your online visibility by optimizing your website for search engines and driving organic traffic. We build credibility and trust with your audience through targeted keyword strategies and quality content. Stay ahead of the competition with our continuous monitoring and optimization to improve your search rankings.",
             backgroundimg:serviceimg1,
@@ -144,8 +143,9 @@ const ServicesDetail = () => {
         });
         break;
   
-      case "UI Designing":
+      case "ui-ux":
         setServicesData({
+          title:'UI/UX Designing',
           introduction:
             "At Zemalt, UI/UX design combines art and science to create intuitive digital experiences. By prioritizing user needs, our designers craft visually appealing interfaces that enhance usability and foster satisfaction. We aim to ensure seamless interactions that drive engagement and business success.",
             backgroundimg:serviceimg6,
@@ -170,8 +170,9 @@ const ServicesDetail = () => {
         });
         break;
   
-      case "Google Ads":
+      case "google-ads":
         setServicesData({
+          title:'Google Ads',
           introduction:
             "Ignite your business growth with Zemalt's cutting-edge web development solutions! We craft visually stunning, high-performing websites that engage users and drive conversions. Elevate your online presence and stand out in the digital marketplace. Partner with Zemalt today and turn your vision into reality!",
             backgroundimg:serviceimg3,
@@ -200,8 +201,9 @@ const ServicesDetail = () => {
         });
         break;
   
-      case "Web Development":
+      case "web-development":
         setServicesData({
+          title:'Web Development',
           introduction:
             "At Zemalt, we specialize in creating innovative web development solutions tailored to your business needs. Our expert team combines cutting-edge technology with user-friendly designs to deliver exceptional online experiences. Partner with Zemalt to elevate your digital presence and achieve your business goals!",
             backgroundimg:serviceimg5,
@@ -233,8 +235,9 @@ const ServicesDetail = () => {
       
       
       
-        case "Content Writing":
+        case "content-writing":
           setServicesData({
+            title:'Content Writing',
             introduction:
               "Transform your ideas into compelling narratives with Zemalt's expert content writing services! Our skilled team crafts engaging, SEO-friendly content that enhances your brand's visibility. Partner with Zemalt to connect meaningfully with your audience and elevate your message!",
               backgroundimg:serviceimg2,
@@ -264,8 +267,9 @@ const ServicesDetail = () => {
           });
           break;
   
-          case "Social Media Ads":
+          case "social-media-ads":
             setServicesData({
+              title:'Social Media Ads',
               introduction:
                 "Unleash the power of social media ads with Zemalt! Our innovative strategies ensure your brand stands out, reaching the right audience at the right time. Experience exceptional results with tailored campaigns that resonate, engage, and convert. Elevate your marketing game and make your brand unforgettable!",
                 backgroundimg:serviceimg4,
@@ -313,7 +317,7 @@ const ServicesDetail = () => {
         >
           <div className="blackscreen">
             <div className="text-section">
-              <h1>{name}</h1>
+              <h1>{servicesData?.title}</h1>
               <p>{servicesData?.introduction}</p>
               <button className="secondary-button" onClick={() => navigate("/contact")}>Get Started</button>
           
@@ -340,7 +344,7 @@ const ServicesDetail = () => {
         <p>
           BENEFITS{" "}
           <span>
-            <img src={headingDesign} />
+            <img src={headingDesign} alt="benifit" />
           </span>
         </p>
       </div>
@@ -350,7 +354,7 @@ const ServicesDetail = () => {
         <div className="content-area">
           
           <div className="left">
-            <p>Benefits of {name}</p>
+          <p className="benifitheading">Benefits of {name}</p>
             <h2 className="benefits-heading">
     {servicesData?.benefits[0]?.name &&
       (() => {
@@ -383,7 +387,7 @@ const ServicesDetail = () => {
             </div>
           </div>
           <div className="left">
-            <p>Benefits of {name}</p>
+            <p className="benifitheading">Benefits of {name}</p>
             <h2 className="benefits-heading">
     {servicesData?.benefits[1]?.name &&
       (() => {

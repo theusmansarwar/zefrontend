@@ -39,9 +39,11 @@
 
 .grid-section .left .content-section:hover {
   transform: scale(1.02);
+  cursor: pointer;
 }
 .grid-section .right .content-section:hover {
   transform: scale(1.02);
+  cursor: pointer;
 }
 
 .grid-section .right .content-section:first-child {

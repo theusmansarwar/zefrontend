@@ -111,6 +111,10 @@
   color: rgb(190, 178, 255)
 
 }
+.footer-column ul li a:hover {
+  color: rgb(190, 178, 255)
+
+}
 .footer-column ul li svg {
   margin-right: 5px;
   font-size: 14px;

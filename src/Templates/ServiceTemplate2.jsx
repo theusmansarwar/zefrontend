@@ -13,7 +13,7 @@ const ServiceTemplate2 = ({ services }) => {
           <div
             key={service.id}
             className="service-card2-section"
-            onClick={() => navigate(`/services/${service.title}`)}
+            onClick={() => navigate(`/services/${service.slug}`)}
           >
             <img src={service.image} alt={service.title} />
             <h2>{service.title}</h2>

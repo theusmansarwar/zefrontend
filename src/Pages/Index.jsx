@@ -19,7 +19,7 @@ const Index = () => {
         <p>
           OUR SERVICES{" "}
           <span>
-            <img src={headingDesign} />
+            <img src={headingDesign} alt="defaulr design" />
           </span>
         </p>
       </div>
@@ -29,7 +29,7 @@ const Index = () => {
         <p>
           OUR TEAM{" "}
           <span>
-            <img src={headingDesign} />
+            <img src={headingDesign} alt="defaulr design"/>
           </span>
         </p>
       </div>
@@ -38,7 +38,7 @@ const Index = () => {
         <p>
           TESTIMONIALS{" "}
           <span>
-            <img src={headingDesign} />
+            <img src={headingDesign} alt="defaulr design"/>
           </span>
         </p>
       </div>

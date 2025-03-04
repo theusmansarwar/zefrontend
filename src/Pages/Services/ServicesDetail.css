@@ -13,7 +13,9 @@
   padding: 20px;
   
 }
-
+.benifitheading{
+  color: var(--secondary-color);
+}
 .feature-item {
   display: flex;
   flex-direction: column;

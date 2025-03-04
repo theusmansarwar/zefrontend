@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
+  padding-top: 20px;
 }
 .team-card {
   background: #fff;
@@ -17,9 +18,11 @@
 }
 
 .Teams-section-data {
-  width: 50%;
+  width: var(--default-width);
   margin-left: var(--side-padding);
   margin-right: var(--side-padding);
+  text-align: center;
+  margin-top: 50px;
 }
 .Teams-section-data h2 span {
   color: var(--secondary-color);

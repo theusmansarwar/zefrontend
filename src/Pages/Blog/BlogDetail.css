@@ -52,8 +52,8 @@ pre {
 
 }
 .description-data img{
- width: 600px;
- height: 400px;
+ max-width: 720px;
+ max-height: 420px;
 display: flex;
 justify-self: center;
 

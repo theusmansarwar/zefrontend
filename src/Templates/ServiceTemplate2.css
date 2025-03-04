@@ -35,7 +35,7 @@
 .service-card2-section h2 {
   color: var(--black-color);
   font-size: 24px;
-
+margin-top: 5px;
 height: 30px;
   overflow: hidden;
 }

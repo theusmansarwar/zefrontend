@@ -14,6 +14,7 @@ import Team from "./Pages/Team/Team";
 import Blog from "./Pages/Blog/Blog";
 import BlogDetail from "./Pages/Blog/BlogDetail";
 import whatsapp from './Assets/whatsapp.png';
+import Pricing from "./Pages/Pricing/Pricing";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-      <img className="whatsappimg" src={whatsapp}/></a>
+      <img className="whatsappimg" src={whatsapp} alt="contact"/></a>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/services" element={<Services />} />
@@ -34,6 +35,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<Aboutus />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/team" element={<Team />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:title" element={<BlogDetail />} />

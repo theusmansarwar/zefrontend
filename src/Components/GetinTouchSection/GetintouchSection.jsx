@@ -15,7 +15,6 @@ const GetintouchSection = () => {
     query: "",
   });
 
-  const [selectedCountryCode, setSelectedCountryCode] = useState(""); // Set country code correctly
   const [alertType, setAlertType] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [formErrors, setFormErrors] = useState({}); // Store validation errors
@@ -44,7 +43,7 @@ const GetintouchSection = () => {
   };
 
   const formatPhoneNumber = (phone) => {
-    const parsedNumber = parsePhoneNumberFromString(phone, selectedCountryCode);
+    const parsedNumber = parsePhoneNumberFromString(phone);
     return parsedNumber && parsedNumber.isValid() ? parsedNumber.formatInternational() : phone;
   };
 

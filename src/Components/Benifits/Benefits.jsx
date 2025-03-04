@@ -1,6 +1,5 @@
 import React from "react";
 import "./Benefits.css";
-import { FaEye, FaChartBar, FaDollarSign, FaCogs } from "react-icons/fa";
 import { GrUserExpert } from "react-icons/gr";
 import { SiMicrostrategy } from "react-icons/si";
 import { FaRankingStar } from "react-icons/fa6";

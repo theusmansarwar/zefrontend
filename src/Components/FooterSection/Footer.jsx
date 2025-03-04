@@ -4,8 +4,7 @@ import {
   FaEnvelope,
   FaLinkedin,
   FaPhone,
-  FaXTwitter,
-  FaYoutube,
+
 } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
@@ -19,7 +18,7 @@ const Footer = () => {
       <h1>Where Strategy Meets Success!</h1>
       <div className="footer-container">
         <div className="footer-left">
-          <img src={zemaltlogo} />
+          <img src={zemaltlogo} alt="zemalt.com" />
           <p>
             Zemalt is a World-Wide digital solutions agency specializing in SEO,
             Google Ads, content writing, social media marketing, web

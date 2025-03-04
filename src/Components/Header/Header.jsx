@@ -15,7 +15,7 @@ const Header = () => {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-
+    { name: "Pricing", path: "/pricing" },
     { name: "Team", path: "/team" },
     { name: "Blog", path: "/blog" },
     { name: "Contact Us", path: "/contact" },
@@ -104,7 +104,7 @@ const Header = () => {
       <Navbar expand="lg">
         <Container fluid className="nav-container">
           <Navbar.Brand href="/">
-            <img className="header-logo" src={zemaltlogo} />
+            <img className="header-logo" src={zemaltlogo} alt="zemalt.com" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">

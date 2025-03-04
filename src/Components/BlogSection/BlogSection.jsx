@@ -6,13 +6,13 @@ import BlogTemplate from "../../Templates/BlogTemplate";
 import { useNavigate } from "react-router-dom";
 import { fetchBlogs } from "../../DAL/fetch";
 import { baseUrl } from "../../Config/Config";
+import BlogCardSkeleton from "../Skeletonloaders/BlogCardSkeleton";
 
 const BlogSection = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
-  const [totalBlogs, setTotalBlogs] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(window.innerWidth <= 768 ? 1 : 3);
   const [index, setIndex] = useState(0);
@@ -44,7 +44,6 @@ const BlogSection = () => {
 
       if (response?.blogs) {
         setBlogs(response.blogs);
-        setTotalBlogs(response.totalBlogs);
         setTotalPages(response.totalPages);
       } else {
         throw new Error(response.message || "Failed to fetch blogs");
@@ -56,18 +55,18 @@ const BlogSection = () => {
     }
   };
 
-  // Handle Next & Previous Blog Pagination
   const nextBlog = () => {
-    if (index + itemsPerPage < blogs.length) {
-      setIndex(index + itemsPerPage);
+    if (page < totalPages) {
+      setPage((prev) => prev + 1);
     }
   };
-
+  
   const prevBlog = () => {
-    if (index > 0) {
-      setIndex(index - itemsPerPage);
+    if (page > 1) {
+      setPage((prev) => prev - 1);
     }
   };
+  
 
   return (
     <div className="Blog-Section">
@@ -91,7 +90,7 @@ const BlogSection = () => {
       {/* Display Blogs */}
       <div className="blog-list">
         {loading ? (
-          <p>Loading...</p>
+          <BlogCardSkeleton/>
         ) : error ? (
           <p className="error-message">{error}</p>
         ) : blogs.length === 0 ? (
@@ -112,7 +111,7 @@ const BlogSection = () => {
      
       <div className="pagination-buttons">
   <FaArrowLeftLong
-    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+    onClick={prevBlog}
     className={`prev-btn ${page === 1 ? "disabled" : ""}`}
   />
 
@@ -125,10 +124,11 @@ const BlogSection = () => {
   ))}
 
   <FaArrowRightLong
-    onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+    onClick={nextBlog}
     className={`next-btn ${page === totalPages ? "disabled" : ""}`}
   />
 </div>
+
 
     </div>
   );

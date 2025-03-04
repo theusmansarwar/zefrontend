@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Team.css";
 import TeamCard from "../../Templates/TeamCard";
 import backgroundimg from "../../Assets/background3.webp";
-import headingDesign from "../../Assets/headingDesign.svg";
 import TeamSkeleton from "../../Components/Skeletonloaders/TeamSkeleton";
 import { getTeam } from "../../DAL/fetch"; // Ensure this function correctly calls the API
 import { baseUrl } from "../../Config/Config";
@@ -52,15 +51,7 @@ const Team = () => {
         </div>
       </div>
 
-      {/* Page Heading */}
-      <div className="page-heading-area">
-        <p>
-          OUR TEAM{" "}
-          <span>
-            <img src={headingDesign} alt="heading design" />
-          </span>
-        </p>
-      </div>
+  
 
       {/* Team Section Description */}
       <div className="Teams-section-data">
