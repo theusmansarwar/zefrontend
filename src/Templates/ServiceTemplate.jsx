@@ -1,24 +1,16 @@
 import React from "react";
 import "./ServiceTEmplate.css";
 import { useNavigate } from "react-router-dom";
+import useTruncateText from "../useTruncateText";
 
-const ServiceTemplate = ({ services }) => {
+const ServiceTemplate = ({ image, name, slug, description }) => {
   const navigate = useNavigate();
+
   return (
-    <div className="service-area-section">
-      <div className="service-grid">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="service-card-section"
-            onClick={() => navigate(`/services/${service.slug}`)}
-          >
-            <img src={service.image} alt={service.title} />
-            <p>{service.description}</p>
-            <div className="rounded-tab2">{service.title}</div>
-          </div>
-        ))}
-      </div>
+    <div className="service-card-section" onClick={() => navigate(`/services/${slug}`)}>
+      <img src={image} alt={name} />
+      <p>{useTruncateText(description, 260)}</p>
+      <div className="rounded-tab2">{name}</div>
     </div>
   );
 };

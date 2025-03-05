@@ -2,7 +2,7 @@ import { invokeApi } from "../Utils/InvokeApi";
 
 export const fetchBlogs = async (limit,page) => {
   const reqObj = {
-    path: `/blog/list?limit=${limit}&page=${page}`,
+    path: `blog/list?limit=${limit}&page=${page}`,
     method: "GET",
     headers: {
     
@@ -12,7 +12,19 @@ export const fetchBlogs = async (limit,page) => {
   };
   return invokeApi(reqObj);
 };
-export const fetchBlogDetail = async (title) => {
+export const fetchServices = async (limit,page) => {
+  const reqObj = {
+    path: `service/live?limit=${limit}&page=${page}`,
+    method: "GET",
+    headers: {
+    
+    },
+
+    postData: {},
+  };
+  return invokeApi(reqObj);
+};
+export const fetchBlogDetail= async (title) => {
   const reqObj = {
     path: `blog/view/${title}`,
     method: "GET",
@@ -24,6 +36,7 @@ export const fetchBlogDetail = async (title) => {
   };
   return invokeApi(reqObj);
 };
+
 export const fetchTestimonial = async (title) => {
   const reqObj = {
     path: `testimonial/view/${title}`,

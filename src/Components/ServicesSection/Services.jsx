@@ -1,82 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Services.css";
 import dot from "../../Assets/dotsdesign.webp";
-import serviceimg1 from "../../Assets/seo.webp";
-import serviceimg2 from "../../Assets/content-writing.webp";
-import serviceimg3 from "../../Assets/googleads.jpeg";
-import serviceimg4 from "../../Assets/social-media-marketing.webp";
-import serviceimg5 from "../../Assets/website-development.webp";
-import serviceimg6 from "../../Assets/ui-ux-design.webp";
-import ServiceTemplate from "../../Templates/ServiceTemplate";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import ServiceTemplate from "../../Templates/ServiceTemplate";
+import { fetchServices } from "../../DAL/fetch";
+import { baseUrl } from "../../Config/Config";
+import BlogCardSkeleton from "../Skeletonloaders/BlogCardSkeleton";
+import Blog2Skeletonm from "../Skeletonloaders/Blog2Skeletonm";
+import ServiceSkeleton from "../Skeletonloaders/ServiceSkeleton";
 
-const services = [
-  {
-    id: 1,
-    title: "Search Engine Optimization",
-    slug:"seo",
-    description:
-      "At Zemalt, we optimize your website to enhance search engine rankings, increase visibility, and drive organic traffic, ensuring your brand reaches its full potential online.",
-    image: serviceimg1,
-  },
-  {
-    id: 2,
-    title: "Web Development",
-    slug:"web-development",
-    description:
-      "Zemalt specializes in designing and developing responsive, user-friendly websites that effectively showcase your brand and services, providing a seamless user experience.",
-    image: serviceimg5,
-  },
-  {
-    id: 3,
-    title: "UI/UX Designing",
-    slug:"ui-ux",
-    description:
-      "Enhance user experience with Zemalt's intuitive UI/UX design, ensuring visitors have a seamless interaction with your website that keeps them coming back.",
-    image: serviceimg6,
-  },
-  {
-    id: 4,
-    title: "Content Writing",
-    slug:"content-writing",
-    description:
-      "Zemalt creates engaging and relevant content that resonates with your audience, enhancing your brand messaging and building a strong connection with potential customers.",
-    image: serviceimg2,
-  },
-  
-  {
-    id: 5,
-    title: "Google Ads",
-    slug:"google-ads",
-    description:
-      "Leverage Zemalt's expertise in targeted Google Ads to reach potential customers and drive immediate traffic to your website, maximizing your advertising investment.",
-    image: serviceimg3,
-  },
-  {
-    id: 6,
-    title: "Social Media Ads",
-    slug:"social-media-ads",
-    description:
-      "Utilize Zemalt’s social media advertising strategies to increase brand awareness and actively engage with your target audience across various platforms.",
-    image: serviceimg4,
-  },
- 
-];
 const Services = () => {
   const navigate = useNavigate();
-  const [index, setIndex] = useState(0);
-  const servicesPerPage=3;
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(window.innerWidth <= 768 ? 1 : 3);
 
-  const nextServices = () => {
-    if (index + servicesPerPage < services.length) {
-      setIndex(index + servicesPerPage);
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerPage(window.innerWidth <= 768 ? 1 : 3);
+      setPage(1);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    getServices();
+  }, [page, itemsPerPage]);
+
+  const getServices = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetchServices(itemsPerPage, page);
+      if (response?.services) {
+        setServices(response.services);
+        setTotalPages(response.totalPages);
+      } else {
+        throw new Error(response.message || "Failed to fetch services");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const prevServices = () => {
-    if (index > 0) {
-      setIndex(index - servicesPerPage);
+  const nextService = () => {
+    if (page < totalPages) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  const prevService = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
     }
   };
 
@@ -94,34 +78,47 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Pass only the required services to ServiceTemplate */}
-        <ServiceTemplate
-          services={services.slice(index, index + servicesPerPage)}
-        />
+       
+        {loading ? (
+          <ServiceSkeleton/>
+        ) : error ? (
+          <p className="error-message">{error}</p>
+        ) : services.length === 0 ? (
+          <p>No services available</p>
+        ) : ( <div className="service-area-section">
+            <div className="service-grid" >
+            {services.map((service) => (
+              <ServiceTemplate
+                key={service._id}
+                image={baseUrl + service.image}
+                name={service.name}
+                slug={service.slug}
+                description={service.introduction}
+              />
+            ))}
+            </div>
+            </div>
+          )}
+        
+       
 
-        {/* Pagination Controls */}
         <div className="pagination-buttons">
           <FaArrowLeftLong
-            onClick={prevServices}
-            className={`prev-btn ${index === 0 ? "disabled" : ""}`}
+            onClick={prevService}
+            className={`prev-btn ${page === 1 ? "disabled" : ""}`}
           />
 
-          {[...Array(Math.ceil(services.length / servicesPerPage))].map(
-            (_, i) => (
-              <span
-                key={i}
-                className={`dott ${
-                  index / servicesPerPage === i ? "Active" : ""
-                }`}
-              ></span>
-            )
-          )}
+          {[...Array(totalPages)].map((_, i) => (
+            <span
+              key={i}
+              onClick={() => setPage(i + 1)}
+              className={`dott ${page === i + 1 ? "Active" : ""}`}
+            ></span>
+          ))}
 
           <FaArrowRightLong
-            onClick={nextServices}
-            className={`next-btn ${
-              index + servicesPerPage >= services.length ? "disabled" : ""
-            }`}
+            onClick={nextService}
+            className={`next-btn ${page === totalPages ? "disabled" : ""}`}
           />
         </div>
       </div>

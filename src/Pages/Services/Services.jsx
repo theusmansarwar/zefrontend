@@ -1,78 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Services.css";
 import dot from "../../Assets/dotsdesign.webp";
 import headingDesign from "../../Assets/headingDesign.svg";
 import ServiceTemplate2 from "../../Templates/ServiceTemplate2";
 import Benefits from "../../Components/Benifits/Benefits";
 import backgroundimg from "../../Assets/background3.webp";
-import serviceimg1 from "../../Assets/seo.webp";
-import serviceimg2 from "../../Assets/content-writing.webp";
-import serviceimg3 from "../../Assets/googleads.jpeg";
-import serviceimg4 from "../../Assets/social-media-marketing.webp";
-import serviceimg5 from "../../Assets/website-development.webp";
-import serviceimg6 from "../../Assets/ui-ux-design.webp";
+import { fetchServices } from "../../DAL/fetch";
+import { baseUrl } from "../../Config/Config"; 
+import ServiceSkeleton from "../../Components/Skeletonloaders/ServiceSkeleton";
+import { Pagination, Stack } from "@mui/material";
+
 
 const Services = () => {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage=9
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top when component mounts
+    window.scrollTo(0, 0); 
   }, []);
 
-  // Service data array
-  const services = [
-    {
-      id: 1,
-      title: "Search Engine Optimization",
-      slug:"seo",
-      description:
-        "At Zemalt, we optimize your website to enhance search engine rankings, increase visibility, and drive organic traffic, ensuring your brand reaches its full potential online.",
-      image: serviceimg1,
-    },
-    {
-      id: 2,
-      title: "Web Development",
-      slug:"web-development",
-      description:
-        "Zemalt specializes in designing and developing responsive, user-friendly websites that effectively showcase your brand and services, providing a seamless user experience.",
-      image: serviceimg5,
-    },
-    {
-      id: 3,
-      title: "UI/UX Designing",
-      slug:"ui-ux",
-      description:
-        "Enhance user experience with Zemalt's intuitive UI/UX design, ensuring visitors have a seamless interaction with your website that keeps them coming back.",
-      image: serviceimg6,
-    },
-    {
-      id: 4,
-      title: "Content Writing",
-      slug:"content-writing",
-      description:
-        "Zemalt creates engaging and relevant content that resonates with your audience, enhancing your brand messaging and building a strong connection with potential customers.",
-      image: serviceimg2,
-    },
-    
-    {
-      id: 5,
-      title: "Google Ads",
-      slug:"google-ads",
-      description:
-        "Leverage Zemalt's expertise in targeted Google Ads to reach potential customers and drive immediate traffic to your website, maximizing your advertising investment.",
-      image: serviceimg3,
-    },
-    {
-      id: 6,
-      title: "Social Media Ads",
-      slug:"social-media-ads",
-      description:
-        "Utilize Zemalt’s social media advertising strategies to increase brand awareness and actively engage with your target audience across various platforms.",
-      image: serviceimg4,
-    },
-   
-  ];
+  useEffect(() => {
+    getServices();
+  }, [page, itemsPerPage]);
 
+  const getServices = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetchServices(itemsPerPage, page);
+      if (response?.services) {
+        setServices(response.services);
+        setTotalPages(response.totalPages);
+      } else {
+        throw new Error(response.message || "Failed to fetch services");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   return (
     <div>
+   
       <div className="Hero-section">
         <div
           className="feature-section"
@@ -94,21 +71,50 @@ const Services = () => {
       <div className="services-section">
         <img src={dot} alt="dot" className="dot1" />
         <img src={dot} alt="dot" className="dot2" />
+
         <div className="service-section">
           <div className="upper-section">
             <h1>
               We Build Best <br /> <span>SERVICE</span> Experience
             </h1>
-          
           </div>
 
-          <div className="Services-grid">
-            <ServiceTemplate2 services={services} /> {/* Pass servicesData */}
-          </div>
+          {loading ? (
+            <ServiceSkeleton />
+          ) : error ? (
+            <p className="error-message">{error}</p>
+          ) : services.length === 0 ? (
+            <p>No services available</p>
+          ) : (
+            <div className="service-area-section">
+              <div className="service-grid">
+                {services.map((service) => (
+                  <ServiceTemplate2
+                    key={service._id}
+                    image={baseUrl + service.image}
+                    name={service.name}
+                    slug={service.slug}
+                    description={service.introduction}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+<Stack spacing={2} alignItems="center">
+              <Pagination
+                count={totalPages} // ✅ Correct total pages
+                page={page}
+                onChange={handleChange}
+                shape="rounded"
+              />
+            </Stack>
+
           <div className="straight-line" />
         </div>
       </div>
 
+      {/* Heading */}
       <div className="page-heading-area">
         <p>
           Why Work With Zemalt?{" "}
@@ -117,6 +123,8 @@ const Services = () => {
           </span>
         </p>
       </div>
+
+      {/* Benefits Section */}
       <Benefits />
     </div>
   );

@@ -51,6 +51,7 @@
 
   .skeleton-grid {
     display: grid;
+    height: 400px;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
