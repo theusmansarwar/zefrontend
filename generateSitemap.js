@@ -20,7 +20,7 @@ const links = [
 
 // Simulating dynamic routes (You should replace this with actual data fetching)
 const servicesSlugs = ["google-ads", "content-writing", "social-media-ads", "ui-ux", "web-development", "seo"];
-const blogSlugs = ["Digital-Marketing-Agency","Digital-Marketing-Strategies","Chiropractor-Digital-Marketing","NFT-search-engine-optimization","Companies-Near-Me","Rapid-Url-Indexer"];
+const blogSlugs = ["digital-marketing-agency-near-me","Local-SEO-Data","Best-Social-Media-Ad-Campaigns","Best-SEO-Companies-in-the-USA","Title-Tags-for-Local-SEO","tracking-local-seo-performance","building-local-seo","Digital-Marketing-Agency","Digital-Marketing-Strategies","Chiropractor-Digital-Marketing","NFT-search-engine-optimization","Companies-Near-Me","Rapid-Url-Indexer"];
 
 // Adding dynamic service pages
 servicesSlugs.forEach(slug => {

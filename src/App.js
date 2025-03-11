@@ -15,9 +15,21 @@ import Blog from "./Pages/Blog/Blog";
 import BlogDetail from "./Pages/Blog/BlogDetail";
 import whatsapp from './Assets/whatsapp.png';
 import Pricing from "./Pages/Pricing/Pricing";
+import { countView } from "./DAL/create";
+import { useEffect } from "react";
 
 
 function App() {
+  useEffect(() => {
+    postViewcount();
+  }, []); 
+
+  const postViewcount = async () => {
+   
+   await countView();
+     
+   
+  };
   return (
     <Router>
       <Header />

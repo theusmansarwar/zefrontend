@@ -2,7 +2,7 @@ import { invokeApi } from "../Utils/InvokeApi";
 export const createLead = async (data) => {
   console.log(...data, "djskfhjksdfks");
   const reqObj = {
-    path: "CreateLeads",
+    path: "/CreateLeads",
     method: "POST",
     headers: {
   
@@ -14,12 +14,24 @@ export const createLead = async (data) => {
 export const commentAdd = async (data) => {
   
   const reqObj = {
-    path: "comment/add",
+    path: "/comment/add",
     method: "POST",
     headers: {
   
     },
     postData: data,
+  };
+  return invokeApi(reqObj);
+};
+export const countView = async () => {
+  
+  const reqObj = {
+    path: "/views/count",
+    method: "POST",
+    headers: {
+  
+    },
+    postData: {},
   };
   return invokeApi(reqObj);
 };
