@@ -422,7 +422,7 @@ const ServicesDetail = () => {
           ))}
         </div>
         </div>
-        { name === "Search Engine Optimization (SEO)" && (
+        { name === "seo" && (
   <div className="Pricing-section">
     <div className="page-heading-area">
       <p>Pricing <span><img src={headingDesign} alt="Heading Design" /></span></p>
