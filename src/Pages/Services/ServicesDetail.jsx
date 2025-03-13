@@ -429,7 +429,7 @@ const ServicesDetail = () => {
     </div>
     <div className="upper-section">
       <h1>
-        <span>Client</span> Acquisition & <br /> Fulfillment <span>Experts</span>
+        <span>Client</span> Acquisition &  <br /> Fulfillment <span>Experts</span>
       </h1>
     </div>
     <PricingPlan /> 
