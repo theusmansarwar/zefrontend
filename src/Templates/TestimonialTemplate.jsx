@@ -1,6 +1,7 @@
 import React from "react";
 import "./TestimonialTemplate.css";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { formatDate } from "../Utils/Formatedate";
 
 const TestimonialTemplate = ({ testimonial }) => {
   const fullStars = Math.floor(testimonial?.rating || 0);
@@ -13,14 +14,14 @@ const TestimonialTemplate = ({ testimonial }) => {
         <div>
           <p className="name">{testimonial?.name}</p>
           <p className="role">
-            {testimonial?.service} | {testimonial?.country}{" "}
+            {testimonial?.service} | {testimonial?.location}{" "}
           </p>
         </div>
       </div>
-      <p className="testimonial-text">{testimonial?.text}</p>
+      <p className="testimonial-text">{testimonial?.description}</p>
       <div className="divider"></div>
       <div className="testimonial-footer">
-        <p>{testimonial?.date}</p>
+        <p>{formatDate(testimonial?.date)}</p>
         <div className="stars">
           {[...Array(fullStars)].map((_, i) => (
             <FaStar key={i} className="filled-star" />

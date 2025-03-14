@@ -17,6 +17,7 @@ import whatsapp from './Assets/whatsapp.png';
 import Pricing from "./Pages/Pricing/Pricing";
 import { countView } from "./DAL/create";
 import { useEffect } from "react";
+import NotFound from "./Components/NotFound/NotFound";
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/blog/:title" element={<BlogDetail />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

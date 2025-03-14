@@ -24,6 +24,19 @@ export const fetchServices = async (limit,page) => {
   };
   return invokeApi(reqObj);
 };
+
+export const fetchTestimonialsList = async (limit,page) => {
+  const reqObj = {
+    path: `/testimonial/live?limit=${limit}&page=${page}`,
+    method: "GET",
+    headers: {
+    
+    },
+
+    postData: {},
+  };
+  return invokeApi(reqObj);
+};
 export const fetchBlogDetail= async (title) => {
   const reqObj = {
     path: `/blog/view/${title}`,

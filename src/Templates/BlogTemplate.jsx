@@ -10,7 +10,7 @@ const BlogTemplate = ({ image, title, content, slug }) => {
       <div className="blogimg"   onClick={() => navigate(`/blog/${slug}`)}>
         <img src={image} alt="Blog" />
       </div>
-      <div className="blog-text-section">
+      <div className="blog-text-section" onClick={() => navigate(`/blog/${slug}`)}>
         <h3>{useTruncateText(title, 30)}</h3>
         <p>{useTruncateText(content, 170)}</p>
       </div>
