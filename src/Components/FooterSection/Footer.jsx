@@ -88,6 +88,13 @@ const Footer = () => {
                   <FaPhone /> +92-(300)-7044-566
                   </a>
                 </li>
+                <li >
+                <a  href="http://wa.me/12103468115"
+              target="_blank"
+              rel="noopener noreferrer">
+                  <FaPhone /> +1 (210) 346-8115
+                  </a>
+                </li>
                 <li>
                 <a
                 href="https://maps.app.goo.gl/owK9zDzZBdNGzWrL7"
