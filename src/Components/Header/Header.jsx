@@ -11,6 +11,7 @@ import "./Header.css";
 import zemaltlogo from "../../Assets/zemalt-logo.png";
 const Header = () => {
   const phoneNumber = "+923007044566";
+  const phoneNumber2 = "+12103468115";
   const email = "company@zemalt.com";
   const menuItems = [
     { name: "Home", path: "/" },
@@ -59,6 +60,16 @@ const Header = () => {
               rel="noopener noreferrer"
             >
               <p>{phoneNumber}</p>
+            </a>
+          </div>
+          <div className="content-item">
+            <BiSolidPhoneCall />
+            <a
+              href="http://wa.me/12103468115"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p>{phoneNumber2}</p>
             </a>
           </div>
           <div className="content-item">
